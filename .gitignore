@@ -1,4 +1,10 @@
+#root
+_dist/
+node_modules/
+
 #server
+server/.nuget/
+server/packages/
 [Bb]in/
 [Oo]bj/
 packages/
