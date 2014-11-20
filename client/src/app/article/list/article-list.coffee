@@ -101,8 +101,16 @@
     else
       channel.getdefault().then (data)->
         $rootScope.title=data.Name
-       
+  normalList = []
+  topList = []
+  for art in articles.value
+    if art.ShowInTop
+      topList.push(art)
+    else
+      normalList.push(art)
   $scope.list = articles
+  $scope.topList = topList
+  $scope.normalList = normalList
   $scope.currentPage =$routeParams.p ? 1
 
   $scope.params=$routeParams

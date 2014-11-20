@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -24,7 +25,10 @@ namespace YangKai.BlogEngine.Web.Mvc.Controllers.OData
         [Queryable(AllowedQueryOptions = AllowedQueryOptions.All, PageSize = 10, MaxExpansionDepth = 5)]
         public override IQueryable<Post> Get()
         {
-            return Proxy.Repository<Post>().GetAll();
+            var list = Proxy.Repository<Post>().GetAll().AsNoTracking().ToList();
+            var result = list.Where(x => x.ShowInTop).ToList();
+            result.AddRange(list.Where(x => !x.ShowInTop).OrderByDescending(x => x.PubDate).ToList());
+            return result.AsQueryable();
         }
 
         protected override Post CreateEntity(Post entity)

@@ -32,6 +32,11 @@ namespace YangKai.BlogEngine.Domain
         public string Title { get; set; }
 
         /// <summary>
+        /// 是否置顶
+        /// </summary>
+        public bool ShowInTop { get; set; }
+
+        /// <summary>
         /// 文章正文.
         /// </summary>
         public string Content { get; set; }

@@ -50,8 +50,16 @@
                     <div class="pull-left">
                         <button class="btn btn-primary btn-sm" ng-disabled="loading">Submit</button>
                     </div>
-                    <div class="pull-right" ng-show="entity.CreateDate">
+                    <div style="margin-left: 20px;" class="pull-left" ng-show="entity.CreateDate">
                         <button type="button" class="btn btn-danger btn-sm" ng-disabled="loading" ng-click="remove()">Remove</button>
+                    </div>
+                    <div style="margin-left: 20px;" class="pull-left">
+                        <div class="checkbox">
+                            <label>
+                                <input ng-model="entity.ShowInTop" class="ace ace-checkbox-2" type="checkbox">
+                                <span class="lbl">Show In Top</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>

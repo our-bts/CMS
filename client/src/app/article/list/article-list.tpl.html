@@ -23,7 +23,13 @@
         <!-- Left Sidebar -->
         <div class="col-md-9 md-margin-bottom-60">
             <!--Blog Post-->        
-            <div class="blog margin-bottom-40" ng-repeat="item in list.value">
+            <div class="blog margin-bottom-40" ng-repeat="item in topList">
+                <h2><a ng-href="/post/{{item.Url}}" ng-bind-html="('[置顶]' + item.Title) | highlight:params.key"></a></h2>
+                <div ng-include="'/app/article/common/article-post-header.tpl.html'"></div>
+                <p ng-bind-html-unsafe="item.Description"></p>
+                <p><a class="btn-u btn-u-small" ng-href="/post/{{item.Url}}"><i class="icon-plus-sign"></i> Read More</a></p>
+            </div>
+            <div class="blog margin-bottom-40" ng-repeat="item in normalList">
                 <h2><a ng-href="/post/{{item.Url}}" ng-bind-html="item.Title | highlight:params.key"></a></h2>
                 <div ng-include="'/app/article/common/article-post-header.tpl.html'"></div>
                 <p ng-bind-html-unsafe="item.Description"></p>
